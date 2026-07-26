@@ -1,0 +1,190 @@
+---
+import Footer from '../components/Footer.astro';
+import Navbar from '../components/Navbar.astro';
+import "@fontsource-variable/space-grotesk";
+import "@fontsource/jetbrains-mono";
+
+interface Props {
+  title: string;
+  description: string;
+}
+
+const { description, title } = Astro.props;
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+---
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <meta name="author" content="José María Díaz Moreno" />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content="/profile.webp" />
+    <meta property="og:url" content={canonicalURL.href} />
+    <meta property="og:type" content="website" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+
+    <link rel="canonical" href={canonicalURL.href} />
+    <meta name="theme-color" content="#0A1929" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{title}</title>
+    <meta name="generator" content={Astro.generator} />
+  </head>
+  <body class="relative text-black dark:text-white">
+    <!-- Skip to content -->
+    <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-white focus:text-black focus:rounded">
+      Saltar al contenido
+    </a>
+
+    <div class="absolute top-0 bottom-0 z-[-2] min-h-screen w-full bg-gray-50 dark:bg-gray-950
+    bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,#D6F5FC,#F4F9FB)]
+    dark:bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,#123247,#0B1220)]"/>
+
+    <Navbar />
+    <main id="main-content">
+      <slot />
+    </main>
+    <Footer />
+
+    <style is:global>
+      :root {
+        --text-color-light: #ECECEC;
+        --text-color-dark: #1D1D1D;
+
+        --red: #61DAFB;
+        --dark-blue: #0A1929;
+        --light-blue: #0E7490;
+      }
+
+      html {
+        font-family: "Space Grotesk Variable", system-ui, sans-serif;
+        scroll-behavior: smooth;
+      }
+
+      body {
+        color: rgba(17, 17, 17, 0.9);
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+        overscroll-behavior: none;
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        html {
+          scroll-behavior: auto;
+        }
+      }
+
+      @media (prefers-color-scheme: dark) {
+        body {
+          color: rgba(255, 255, 255, 0.9);
+        }
+      }
+
+      #header-nav {
+        animation: blur linear both 0.5s;
+        animation-timeline: scroll();
+        animation-range: 0 500px;
+      }
+
+      @keyframes blur {
+        to {
+          backdrop-filter: blur(20px);
+          border-width: 1px;
+          border-color: rgba(0, 0, 0);
+          padding: 0.25rem 0.75rem;
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          background-color: rgb(229, 229, 229);
+          border-radius: 9999px;
+        }
+      }
+
+      @media (prefers-color-scheme: dark) {
+        @keyframes blur {
+          from {
+            border: 0px;
+          }
+          to {
+            box-shadow:
+              0px 5px 50px -5px rgba(0, 0, 0, 0.1),
+              0px 0px 0 1px rgba(0, 0, 0, 0.3);
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(20px);
+            border-width: 1px;
+            border-color: rgba(0, 0, 0);
+            padding-left: 0.75rem;
+            padding-right: 0.75rem;
+            padding-top: 0.25rem;
+            padding-bottom: 0.25rem;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            background-color: rgba(0, 0, 0, 0.3);
+            border-radius: 9999px;
+          }
+        }
+      }
+
+      @media (max-width: 640px) {
+        h1 {
+          font-size: 1.75rem;
+        }
+        p {
+          font-size: 1rem;
+        }
+      }
+
+      img {
+        max-width: 100%;
+        height: auto;
+      }
+
+      /* Animaciones de scroll para secciones */
+      .section-animate {
+        opacity: 0;
+        transform: translateY(32px);
+        transition: opacity 0.6s ease, transform 0.6s ease;
+      }
+
+      .section-animate.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .section-animate {
+          opacity: 1;
+          transform: none;
+          transition: none;
+        }
+      }
+    </style>
+
+    <script>
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+            }
+          });
+        },
+        { threshold: 0.1 }
+      );
+
+      document.querySelectorAll('.section-animate').forEach((el) => {
+        observer.observe(el);
+      });
+    </script>
+  </body>
+</html>

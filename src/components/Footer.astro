@@ -1,0 +1,141 @@
+---
+import GitHub from "./icons/GitHub.astro";
+import LinkedIn from "./icons/LinkedIn.astro";
+import Mail from "./icons/Mail.astro";
+---
+
+<footer>
+    <div class="footer-content">
+        <div class="logo-container">
+            <p class="text-2xl text-bold">José María Díaz Moreno</p>
+        </div>
+
+        <nav class="footer-links" aria-label="Footer">
+            <a href="/#experiencia">Experiencia</a>
+            <a href="/#educacion">Educación</a>
+            <a href="/#tecnologias">Tecnologías</a>
+            <a href="/#contacto">Contacto</a>
+        </nav>
+
+        <div class="footer-v2__social-links">
+            <a href="https://github.com/josemariadiazasir" class="footer-v2__social-link" aria-label="GitHub" target="_blank" rel="noopener noreferrer">
+                <GitHub class="size-6" />
+            </a>
+            <a href="https://www.linkedin.com/in/jose-maria-diaz-moreno-292b671b0/" class="footer-v2__social-link" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">
+                <LinkedIn class="size-6" />
+            </a>
+            <a href="mailto:josediazasir@gmail.com" class="footer-v2__social-link" aria-label="Email" target="_blank" rel="noopener noreferrer">
+                <Mail class="size-6" />
+            </a>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        <p>&copy; <span id="year"></span> José María Díaz Moreno. Todos los derechos reservados.</p>
+    </div>
+</footer>
+
+<script>
+    const yearElement = document.getElementById("year");
+    if (yearElement) {
+        yearElement.textContent = new Date().getFullYear().toString();
+    }
+</script>
+
+<style>
+    footer {
+        text-align: center;
+        padding: 20px;
+        background-color: transparent;
+        color: var(--text-color-dark);
+    }
+
+    html.dark footer {
+        color: var(--text-color-light);
+    }
+
+    .footer-content {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 40px;
+        flex-wrap: wrap;
+    }
+
+    .logo-container p {
+        color: var(--text-color-dark);
+        font-size: 20px;
+        font-weight: 600;
+    }
+
+    html.dark .logo-container p {
+        color: var(--text-color-light);
+    }
+
+    .footer-links a {
+        margin: 0 10px;
+        text-decoration: none;
+        color: var(--text-color-dark);
+        font-size: 14px;
+        font-weight: bold;
+    }
+
+    .footer-links a:hover {
+        color: var(--red);
+    }
+
+    html.dark .footer-links a {
+        color: var(--text-color-light);
+    }
+
+    html.dark .footer-links a:hover {
+        color: var(--red);
+    }
+
+    .footer-v2__social-links {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .footer-v2__social-link {
+        color: var(--text-color-dark);
+        text-decoration: none;
+        transition: color 0.3s ease;
+    }
+
+    html.dark .footer-v2__social-link {
+        color: var(--text-color-light);
+    }
+
+    .footer-v2__social-link:hover {
+        color: var(--red);
+    }
+
+    .footer-bottom {
+        margin-top: 20px;
+        font-size: 12px;
+        color: var(--text-color-dark);
+    }
+
+    .footer-bottom p {
+        margin: 0;
+        font-size: 12px;
+        color: var(--text-color-dark);
+    }
+
+    html.dark .footer-bottom p {
+        color: var(--text-color-light);
+    }
+
+    @media (max-width: 768px) {
+        .footer-content {
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .footer-links {
+            margin-top: 10px;
+        }
+    }
+</style>

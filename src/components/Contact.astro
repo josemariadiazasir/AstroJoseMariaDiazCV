@@ -1,0 +1,36 @@
+---
+import SocialPill from "./SocialPill.astro";
+import MailIcon from "./icons/Mail.astro";
+import PhoneIcon from "./icons/Phone.astro";
+import LinkedInIcon from "./icons/LinkedIn.astro";
+import GitHubIcon from "./icons/GitHub.astro";
+---
+
+<div class="max-w-xl mx-auto text-center">
+  <p class="text-lg text-[var(--text-color-dark)] dark:text-gray-300 mb-8">
+    ¿Tienes un proyecto entre manos o buscas incorporar a alguien al equipo?
+    Escríbeme, estaré encantado de hablar.
+  </p>
+
+  <div class="flex flex-wrap gap-4 justify-center">
+    <SocialPill href="mailto:josediazasir@gmail.com">
+      <MailIcon class="size-4" />
+      josediazasir@gmail.com
+    </SocialPill>
+    <SocialPill href="tel:+34654280130">
+      <PhoneIcon class="size-4" />
+      654 280 130
+    </SocialPill>
+  </div>
+
+  <div class="flex flex-wrap gap-4 justify-center mt-4">
+    <SocialPill href="https://www.linkedin.com/in/jose-maria-diaz-moreno-292b671b0/">
+      <LinkedInIcon class="size-4" />
+      LinkedIn
+    </SocialPill>
+    <SocialPill href="https://github.com/josemariadiazasir">
+      <GitHubIcon class="size-4" />
+      GitHub
+    </SocialPill>
+  </div>
+</div>

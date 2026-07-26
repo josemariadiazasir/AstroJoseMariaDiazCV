@@ -1,0 +1,45 @@
+---
+import { Image } from 'astro:assets';
+import profileImg from '../assets/profile.webp';
+import React from "./icons/React.astro";
+import Typescript from "./icons/Typescript.astro";
+import NodeJs from "./icons/NodeJs.astro";
+import MongoDB from "./icons/MongoDB.astro";
+import Html from "./icons/Html.astro";
+import Css from "./icons/Css.astro";
+---
+
+<article class="flex flex-col items-center justify-center gap-8 text-[var(--text-color-dark)] dark:text-[var(--text-color-light)] md:flex-row">
+  <div class="[&>p]:mb-4 [&>p>strong]:text-[var(--red)] dark:[&>p>strong]:text-[var(--red)] [&>p>strong]:font-normal [&>p>strong]:font-mono text-pretty order-2 md:order-1">
+    <p>
+      Soy <strong>ingeniero informático</strong> y llevo más de <strong>5 años</strong> desarrollando aplicaciones web, con foco especial en <strong>Node.js y MongoDB</strong> en el backend, y <strong>React y TypeScript</strong> en el frontend. He trabajado en consultoras tecnológicas (Babel, Raona) y en cliente final (SICE,Telefónica), pasando por proyectos de front-end, APIs REST y automatización.
+    </p>
+
+    <p>
+      Me manejo cómodo tanto <strong>construyendo interfaces</strong> accesibles y responsive como <strong>integrando APIs</strong> y gestionando el estado de aplicaciones complejas. Trabajo a diario con metodologías <strong>Agile/Scrum</strong>, control de calidad con <strong>SonarQube</strong> y procesos de <strong>CI/CD</strong>.
+    </p>
+
+    <p>
+      Soy una persona de <strong>carácter abierto</strong>, con facilidad de aprendizaje y ganas constantes de seguir formándome en nuevas tecnologías, aportando en equipo desde el primer día.
+    </p>
+  </div>
+
+  <Image
+    src={profileImg}
+    alt="José María Díaz Moreno"
+    width={200}
+    height={200}
+    class="order-1 object-cover w-64 h-full p-1 md:order-2 rotate-3 lg:p-2 lg:w-64 aspect-square rounded-2xl bg-black/20 dark:bg-yellow-500/5 ring-1 ring-black/70 dark:ring-white/20"
+    style="object-position: 50% 20%"
+    loading="lazy"
+  />
+</article>
+
+<div class="flex flex-wrap gap-2 mt-4 justify-center md:justify-start">
+  <React />
+  <NodeJs />
+  <MongoDB />
+  <Typescript />
+  <Html />
+  <Css />
+</div>

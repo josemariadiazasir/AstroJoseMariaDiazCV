@@ -1,0 +1,92 @@
+---
+const education = [
+  {
+    period: "2016 – 2020",
+    title: "Grado en Ingeniería Informática",
+    place: "Universidad Rey Juan Carlos, Madrid",
+  },
+  {
+    period: "2014 – 2016",
+    title: "Ciclo Superior en Administración de Sistemas Informáticos en Red",
+    place: "IIES Europa, Rivas-Vaciamadrid, Madrid",
+  },
+];
+
+const complementary = [
+  {
+    period: "2020 – 2021",
+    title: "Formación superior en Organizaciones Ágiles y Transformación Digital",
+    place: "Universidad de Alcalá (UAH), Madrid · 750 horas",
+  },
+];
+---
+
+<div class="grid gap-10 md:grid-cols-2 max-w-3xl mx-auto">
+  <div>
+    <h3 class="text-sm font-bold uppercase tracking-wide text-[var(--red)] mb-4">
+      Formación reglada
+    </h3>
+    <div class="space-y-6">
+      {education.map((item) => (
+        <div class="edu-card">
+          <p class="text-xs font-semibold text-gray-500 dark:text-gray-400">{item.period}</p>
+          <h4 class="font-bold text-[var(--text-color-dark)] dark:text-[var(--text-color-light)] mt-0.5">
+            {item.title}
+          </h4>
+          <p class="text-sm text-gray-600 dark:text-gray-300 mt-0.5">{item.place}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <div>
+    <h3 class="text-sm font-bold uppercase tracking-wide text-[var(--red)] mb-4">
+      Formación complementaria
+    </h3>
+    <div class="space-y-6">
+      {complementary.map((item) => (
+        <div class="edu-card">
+          <p class="text-xs font-semibold text-gray-500 dark:text-gray-400">{item.period}</p>
+          <h4 class="font-bold text-[var(--text-color-dark)] dark:text-[var(--text-color-light)] mt-0.5">
+            {item.title}
+          </h4>
+          <p class="text-sm text-gray-600 dark:text-gray-300 mt-0.5">{item.place}</p>
+        </div>
+      ))}
+
+      <div class="edu-card">
+        <p class="text-xs font-semibold text-gray-500 dark:text-gray-400">Otros</p>
+        <h4 class="font-bold text-[var(--text-color-dark)] dark:text-[var(--text-color-light)] mt-0.5">
+          Introducción al desarrollo de videojuegos con Unity
+        </h4>
+        <p class="text-sm text-gray-600 dark:text-gray-300 mt-0.5">
+          edX · Universidad Politécnica de Valencia
+        </p>
+      </div>
+
+      <div class="edu-card">
+        <p class="text-xs font-semibold text-gray-500 dark:text-gray-400">Otros</p>
+        <h4 class="font-bold text-[var(--text-color-dark)] dark:text-[var(--text-color-light)] mt-0.5">
+          Título de socorrista
+        </h4>
+        <p class="text-sm text-gray-600 dark:text-gray-300 mt-0.5">
+          Asociación Española de Técnicos en Salvamento Acuático y Socorrismo · 100 horas
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .edu-card {
+    padding: 1rem 1.25rem;
+    border-radius: 0.75rem;
+    background-color: rgba(10, 25, 41, 0.05);
+    border: 1px solid rgba(10, 25, 41, 0.1);
+  }
+
+  :global(html.dark) .edu-card {
+    background-color: rgba(236, 236, 236, 0.04);
+    border-color: rgba(236, 236, 236, 0.1);
+  }
+</style>

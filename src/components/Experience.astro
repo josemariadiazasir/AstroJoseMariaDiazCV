@@ -1,0 +1,93 @@
+---
+import ExperienceItem from "./ExperienceItem.astro";
+
+const jobs = [
+  {
+    company: "SICE",
+    role: "Software Engineer",
+    period: "Abril 2024 — Actualidad",
+    location: "Madrid",
+    current: true,
+    bullets: [
+      "Desarrollo de aplicaciones web SPA con React (Hooks, Context API, TanStack Query, Material UI) y Preact (Signals).",
+      "Desarrollo de APIs REST con Node.js y Express, incluyendo integración con el frontend.",
+      "Implementación de interfaces responsive y accesibles con HTML5, CSS3 (Flexbox, Grid) y TypeScript.",
+      "Pruebas unitarias e integración con React Testing Library y Vitest.",
+      "Gestión de estado con Context API, Redux y Zustand según necesidades del proyecto.",
+      "Buenas prácticas de desarrollo, patrones de diseño, ESLint y Prettier.",
+      "Control de versiones con Git (ramas, Merge Requests y revisión de código).",
+      "Participación en CI/CD con Jenkins y control de calidad con SonarQube.",
+      "Trabajo en Agile/Scrum utilizando Jira y Knossos.",
+    ],
+  },
+  {
+    company: "Babel Sistemas",
+    role: "Software Engineer",
+    period: "Agosto 2022 — Abril 2024",
+    location: "Madrid",
+    bullets: [
+      "Desarrollo de aplicaciones web SPA con React (Hooks, Context API, TanStack Query, Material UI) y Preact (Signals).",
+      "Desarrollo de APIs REST con Node.js y Express, incluyendo integración con el frontend.",
+      "Implementación de interfaces responsive y accesibles con HTML5, CSS3 (Flexbox, Grid) y TypeScript.",
+      "Pruebas unitarias e integración con React Testing Library y Vitest.",
+      "Gestión de estado con Context API, Redux y Zustand según necesidades del proyecto.",
+      "Uso de Git para control de versiones (ramas, Merge Requests y revisión de código).",
+      "Participación en CI/CD con Jenkins y control de calidad con SonarQube.",
+      "Trabajo en Agile/Scrum utilizando Jira y Knossos.",
+    ],
+  },
+  {
+    company: "Raona Enginyers SL",
+    role: "Junior Consultant",
+    period: "Noviembre 2021 — Agosto 2022",
+    location: "Madrid",
+    bullets: [
+      "Desarrollo de aplicaciones web con React, creando componentes reutilizables y manteniendo buenas prácticas de arquitectura.",
+      "Integración y personalización de soluciones en Microsoft SharePoint, adaptando funcionalidades a necesidades de negocio.",
+      "Control de versiones y trabajo colaborativo con Git.",
+      "Automatización de tareas y procesos de build con Gulp y Node.js.",
+      "Trabajo en entornos Linux, configurando entornos de desarrollo y despliegue.",
+    ],
+  },
+  {
+    company: "Telefónica S.A.",
+    role: "Desarrollador web",
+    period: "Septiembre 2020 — Agosto 2021",
+    location: "Madrid",
+    bullets: [
+      "Desarrollo de aplicaciones web con React y Node.js, implementando arquitecturas escalables y mantenibles.",
+      "Maquetación de interfaces responsive con HTML5 y CSS3.",
+      "Desarrollo de aplicaciones móviles nativas utilizando Android Studio.",
+      "Mantenimiento y evolución de aplicaciones en Python, incluyendo modelos de series temporales para análisis y predicción.",
+      "Control de versiones con Git y trabajo en entornos Linux.",
+      "Automatización de procesos y gestión de dependencias con Node.js.",
+    ],
+  },
+  {
+    company: "Eltec IT",
+    role: "Administrador de sistemas",
+    period: "Abril 2016 — Junio 2016",
+    location: "Rivas-Vaciamadrid, Madrid",
+    bullets: [
+      "Mantenimiento de equipos informáticos (Linux, Windows, Debian).",
+      "Mantenimiento de aplicaciones internas.",
+      "Resolución de incidencias online.",
+      "Gestión de redes.",
+    ],
+  },
+];
+---
+
+<div class="max-w-2xl mx-auto">
+  {jobs.map((job, i) => (
+    <ExperienceItem
+      company={job.company}
+      role={job.role}
+      period={job.period}
+      location={job.location}
+      bullets={job.bullets}
+      current={job.current}
+      isLast={i === jobs.length - 1}
+    />
+  ))}
+</div>

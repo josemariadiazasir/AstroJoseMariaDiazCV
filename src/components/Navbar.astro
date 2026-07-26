@@ -1,0 +1,92 @@
+---
+import ThemeToggle from "./ThemeSwitcher.astro";
+
+const navItems = [
+  { title: "Inicio", label: "hero", url: "/#hero" },
+  { title: "Sobre mí", label: "about", url: "/#about" },
+  { title: "Experiencia", label: "experiencia", url: "/#experiencia" },
+  { title: "Educación", label: "educacion", url: "/#educacion" },
+  { title: "Tecnologías", label: "tecnologias", url: "/#tecnologias" },
+  { title: "Contacto", label: "contacto", url: "/#contacto" },
+];
+---
+
+<header class="fixed top-0 z-10 flex items-center justify-center w-full mx-auto mt-2">
+  <nav
+    id="header-nav"
+    class="flex px-3 text-sm font-medium rounded-full text-gray-600 dark:text-gray-200 justify-center items-center"
+    aria-label="Principal"
+  >
+    {
+      navItems.map((link) => (
+        <a
+          class="relative block px-2 py-2 transition whitespace-nowrap"
+          aria-label={link.label}
+          href={link.url}
+        >
+          {link.title}
+        </a>
+      ))
+    }
+    <ThemeToggle />
+  </nav>
+</header>
+
+<script>
+  const sections = document.querySelectorAll("section[id]");
+  const navItems = document.querySelectorAll("header nav a");
+
+  const callback = (entries: IntersectionObserverEntry[]) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        navItems.forEach((item) => {
+          if (item.getAttribute("aria-label") === entry.target.id) {
+            item.classList.add("text-active");
+          } else {
+            item.classList.remove("text-active");
+          }
+        });
+      }
+    });
+  };
+
+  const observer = new IntersectionObserver(callback, {
+    root: null,
+    rootMargin: "0px",
+    threshold: 0.3,
+  });
+
+  sections.forEach((section) => observer.observe(section));
+</script>
+
+<style>
+  nav {
+    animation: nav-shadow 1s linear both;
+    animation-timeline: scroll();
+    animation-range: 0 100px;
+    background-color: rgba(255, 255, 255, 0.5);
+  }
+
+  :global(html.dark) nav {
+    background-color: rgba(31, 41, 55, 0.9);
+  }
+
+  @keyframes nav-shadow {
+    0% {
+      background-color: rgba(255, 255, 255, 0);
+    }
+    to {
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+      outline: 1px solid rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(8px);
+    }
+  }
+
+  nav a.text-active {
+    color: var(--red);
+  }
+
+  nav a:hover {
+    color: var(--red);
+  }
+</style>

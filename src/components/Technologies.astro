@@ -1,0 +1,81 @@
+---
+import React from "./icons/React.astro";
+import Typescript from "./icons/Typescript.astro";
+import NodeJs from "./icons/NodeJs.astro";
+import MongoDB from "./icons/MongoDB.astro";
+import Docker from "./icons/Docker.astro";
+import Html from "./icons/Html.astro";
+import Css from "./icons/Css.astro";
+import SkillPill from "./SkillPill.astro";
+
+const categories = [
+  {
+    title: "Lenguajes",
+    skills: ["JavaScript (ES6+)", "TypeScript", "SQL", "JSON", "Python", "Java"],
+  },
+  {
+    title: "Frontend",
+    skills: [
+      "React (5,5 años)", "Preact", "Vite", "React Router", "Context API", "Redux",
+      "Zustand", "TanStack Query", "Axios", "Material UI (MUI)", "Tailwind CSS",
+      "React Hook Form", "Zod", "i18next",
+    ],
+  },
+  {
+    title: "Testing",
+    skills: ["React Testing Library", "Vitest"],
+  },
+  {
+    title: "APIs y Backend",
+    skills: ["Node.js", "Express", "REST APIs", "MongoDB"],
+  },
+  {
+    title: "Control de versiones y herramientas",
+    skills: [
+      "Git", "GitHub", "GitLab", "npm", "Yarn", "pnpm", "Docker", "Postman",
+      "Swagger / OpenAPI", "ESLint", "Prettier", "Husky", "Webpack", "Babel",
+    ],
+  },
+  {
+    title: "CI/CD y calidad",
+    skills: ["Jenkins", "SonarQube"],
+  },
+  {
+    title: "Metodologías",
+    skills: ["Agile", "Scrum", "Jira"],
+  },
+  {
+    title: "Herramientas de IA",
+    skills: ["GitHub Copilot", "ChatGPT", "Claude"],
+  },
+  {
+    title: "Sistemas operativos",
+    skills: ["Windows", "Linux (Ubuntu)", "macOS"],
+  },
+];
+---
+
+<div class="flex flex-wrap gap-2 justify-center md:justify-start mb-10">
+  <React />
+  <NodeJs />
+  <MongoDB />
+  <Typescript />
+  <Docker />
+  <Html />
+  <Css />
+</div>
+
+<div class="flex flex-col gap-y-8">
+  {categories.map(({ title, skills }) => (
+    <div>
+      <h3 class="text-sm font-bold uppercase tracking-wide text-[var(--red)] mb-3">
+        {title}
+      </h3>
+      <div class="flex flex-wrap gap-2">
+        {skills.map((skill) => (
+          <SkillPill>{skill}</SkillPill>
+        ))}
+      </div>
+    </div>
+  ))}
+</div>

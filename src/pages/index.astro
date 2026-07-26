@@ -1,0 +1,76 @@
+---
+import Layout from '../layouts/Layout.astro';
+import SectionContainer from '../components/SectionContainer.astro';
+import TitleSection from '../components/TitleSection.astro';
+import Hero from '../components/Hero.astro';
+import About from '../components/About.astro';
+import Experience from '../components/Experience.astro';
+import Education from '../components/Education.astro';
+import Technologies from '../components/Technologies.astro';
+import Extras from '../components/Extras.astro';
+import Contact from '../components/Contact.astro';
+
+import Person from '../components/icons/Person.astro';
+import Work from '../components/icons/Work.astro';
+import EducationIcon from '../components/icons/Education.astro';
+import Mail from '../components/icons/Mail.astro';
+import Sparkle from '../components/icons/Sparkle.astro';
+---
+<Layout
+  title="José María Díaz Moreno · Software Engineer"
+  description="CV de José María Díaz Moreno, Software Engineer especializado en React, TypeScript y Node.js, con más de 5 años de experiencia."
+>
+  <div class="px-4">
+    <SectionContainer id="hero" class="py-16 md:py-36">
+      <Hero />
+    </SectionContainer>
+
+    <div class="space-y-24">
+
+      <SectionContainer id="about" class="section-animate">
+        <TitleSection>
+          <Person class="size-8" />
+          Sobre mí
+        </TitleSection>
+        <About />
+      </SectionContainer>
+
+      <SectionContainer id="experiencia" class="section-animate">
+        <TitleSection>
+          <Work class="size-8" />
+          Experiencia
+        </TitleSection>
+        <Experience />
+      </SectionContainer>
+
+      <SectionContainer id="educacion" class="section-animate">
+        <TitleSection>
+          <EducationIcon class="size-8" />
+          Educación
+        </TitleSection>
+        <Education />
+      </SectionContainer>
+
+      <SectionContainer id="tecnologias" class="section-animate">
+        <TitleSection>
+          <Sparkle class="size-8" />
+          Tecnologías
+        </TitleSection>
+        <Technologies />
+      </SectionContainer>
+
+      <SectionContainer id="extras" class="section-animate">
+        <Extras />
+      </SectionContainer>
+
+      <SectionContainer id="contacto" class="section-animate">
+        <TitleSection>
+          <Mail class="size-8" />
+          Contacto
+        </TitleSection>
+        <Contact />
+      </SectionContainer>
+
+    </div>
+  </div>
+</Layout>

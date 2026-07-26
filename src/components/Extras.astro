@@ -1,0 +1,58 @@
+---
+import Sparkle from "./icons/Sparkle.astro";
+
+const aptitudes = [
+  "Carácter abierto",
+  "Capacidad de trabajo en equipo",
+  "Facilidad de aprendizaje",
+  "Responsable",
+  "Ganas de aprender",
+];
+
+const otherInfo = [
+  "Disponibilidad para viajar",
+  "Coche propio",
+  "No fumador",
+  "Deportista",
+];
+---
+
+<div class="grid gap-10 md:grid-cols-3 max-w-4xl mx-auto text-[var(--text-color-dark)] dark:text-[var(--text-color-light)]">
+  <div>
+    <h3 class="text-sm font-bold uppercase tracking-wide text-[var(--red)] mb-4">Idiomas</h3>
+    <ul class="space-y-3">
+      <li class="flex justify-between border-b border-black/10 dark:border-white/10 pb-2">
+        <span>Español</span>
+        <span class="text-gray-500 dark:text-gray-400">Nativo</span>
+      </li>
+      <li class="flex justify-between border-b border-black/10 dark:border-white/10 pb-2">
+        <span>Inglés</span>
+        <span class="text-gray-500 dark:text-gray-400">Escrito y comprensión alto</span>
+      </li>
+    </ul>
+  </div>
+
+  <div>
+    <h3 class="text-sm font-bold uppercase tracking-wide text-[var(--red)] mb-4">Aptitudes</h3>
+    <ul class="space-y-2">
+      {aptitudes.map((item) => (
+        <li class="flex items-center gap-2">
+          <Sparkle class="size-4 text-[var(--red)] shrink-0" />
+          {item}
+        </li>
+      ))}
+    </ul>
+  </div>
+
+  <div>
+    <h3 class="text-sm font-bold uppercase tracking-wide text-[var(--red)] mb-4">Otra información</h3>
+    <ul class="space-y-2">
+      {otherInfo.map((item) => (
+        <li class="flex items-center gap-2">
+          <Sparkle class="size-4 text-[var(--red)] shrink-0" />
+          {item}
+        </li>
+      ))}
+    </ul>
+  </div>
+</div>

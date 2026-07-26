@@ -1,0 +1,84 @@
+---
+interface Props {
+  company: string;
+  role: string;
+  period: string;
+  location: string;
+  bullets: string[];
+  current?: boolean;
+  isLast?: boolean;
+}
+const { company, role, period, location, bullets, current = false, isLast = false } = Astro.props;
+---
+
+<div class="timeline-item">
+  <div class="timeline-marker">
+    <span class={`timeline-dot ${current ? "timeline-dot--current" : ""}`}></span>
+    {!isLast && <span class="timeline-line"></span>}
+  </div>
+  <div class="timeline-content">
+    <div class="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
+      <h3 class="text-xl font-bold text-[var(--text-color-dark)] dark:text-[var(--text-color-light)]">
+        {role} <span class="text-[var(--red)]">· {company}</span>
+      </h3>
+      {current && (
+        <span class="text-xs font-mono font-semibold uppercase tracking-wide text-[var(--red)] bg-[var(--red)]/10 rounded-full px-2 py-0.5">
+          Actual
+        </span>
+      )}
+    </div>
+    <p class="text-sm text-gray-500 dark:text-gray-400 mt-1 font-mono">{period} · {location}</p>
+    <ul class="mt-3 space-y-1.5 text-[var(--text-color-dark)] dark:text-gray-300">
+      {bullets.map((bullet) => (
+        <li class="flex gap-2">
+          <span class="text-[var(--red)] mt-1.5 block w-1 h-1 rounded-full bg-[var(--red)] shrink-0"></span>
+          <span>{bullet}</span>
+        </li>
+      ))}
+    </ul>
+  </div>
+</div>
+
+<style>
+  .timeline-item {
+    display: flex;
+    gap: 1.25rem;
+  }
+
+  .timeline-marker {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 0.4rem;
+  }
+
+  .timeline-dot {
+    width: 0.85rem;
+    height: 0.85rem;
+    border-radius: 9999px;
+    background-color: var(--dark-blue);
+    border: 2px solid var(--light-blue);
+    flex-shrink: 0;
+  }
+
+  .timeline-dot--current {
+    background-color: var(--red);
+    border-color: var(--red);
+    box-shadow: 0 0 0 4px rgba(97, 218, 251, 0.15);
+  }
+
+  .timeline-line {
+    width: 2px;
+    flex: 1;
+    margin-top: 0.25rem;
+    background: linear-gradient(to bottom, rgba(10, 25, 41, 0.35), rgba(10, 25, 41, 0.05));
+  }
+
+  :global(html.dark) .timeline-line {
+    background: linear-gradient(to bottom, rgba(236, 236, 236, 0.3), rgba(236, 236, 236, 0.05));
+  }
+
+  .timeline-content {
+    padding-bottom: 2.5rem;
+  }
+</style>

@@ -1,0 +1,43 @@
+---
+interface Props {
+  class?: string;
+}
+const { class: className = "" } = Astro.props;
+---
+
+<span class={`skill-pill ${className}`}>
+  <slot />
+</span>
+
+<style>
+  .skill-pill {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.3rem 0.75rem;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    border-radius: 9999px;
+    background-color: rgba(10, 25, 41, 0.08);
+    border: 1px solid rgba(10, 25, 41, 0.15);
+    color: var(--text-color-dark);
+    transition: border-color 0.2s ease, color 0.2s ease, background-color 0.2s ease;
+  }
+
+  .skill-pill:hover {
+    border-color: var(--red);
+    color: var(--red);
+    background-color: rgba(97, 218, 251, 0.08);
+  }
+
+  :global(html.dark) .skill-pill {
+    background-color: rgba(236, 236, 236, 0.06);
+    border-color: rgba(236, 236, 236, 0.15);
+    color: var(--text-color-light);
+  }
+
+  :global(html.dark) .skill-pill:hover {
+    border-color: var(--red);
+    color: var(--red);
+    background-color: rgba(97, 218, 251, 0.12);
+  }
+</style>
